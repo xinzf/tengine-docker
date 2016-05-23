@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM index.alauda.cn/library/ubuntu:14.04
 
 MAINTAINER Erik Osterman <e@osterman.com>
 
