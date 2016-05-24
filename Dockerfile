@@ -53,9 +53,9 @@ RUN apt-get update && \
                        curl && \
     tar -zxvf tengine.tar.gz 
 
-RUN cd tengine-${NGINX_VERSION} 
 RUN git clone https://github.com/gnosek/nginx-upstream-fair.git
-RUN ./configure \
+RUN mv nginx-upstream-fair tengine-${NGINX_VERSION}/
+RUN cd tengine-${NGINX_VERSION}  && ./configure \
         --enable-mods-static=all \
         --user=www-data \
         --group=www-data \
