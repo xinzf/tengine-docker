@@ -49,6 +49,7 @@ RUN apt-get update && \
                        libpcre++-dev \
                        libperl-dev \
                        wget \
+                       git \
                        curl && \
     tar -zxvf tengine.tar.gz 
 
