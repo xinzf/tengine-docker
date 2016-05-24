@@ -1,1 +1,1 @@
-docker build -t="index.alauda.cn/zhaoic/tengine:2.1.0" .
+docker build -t="index.alauda.cn/zhaoic/tengine-withfair:2.1.0" .

@@ -1,4 +1,5 @@
-FROM index.alauda.cn/library/ubuntu:14.04
+#FROM index.alauda.cn/library/ubuntu:14.04
+FROM ubuntu:14.04
 
 MAINTAINER Erik Osterman <e@osterman.com>
 
@@ -49,9 +50,11 @@ RUN apt-get update && \
                        libperl-dev \
                        wget \
                        curl && \
-    tar -zxvf tengine.tar.gz && \
-    cd tengine-${NGINX_VERSION} && \
-    ./configure \
+    tar -zxvf tengine.tar.gz 
+
+RUN cd tengine-${NGINX_VERSION} 
+RUN git clone https://github.com/gnosek/nginx-upstream-fair.git
+RUN ./configure \
         --enable-mods-static=all \
         --user=www-data \
         --group=www-data \
@@ -64,7 +67,7 @@ RUN apt-get update && \
         --http-proxy-temp-path=/var/lib/nginx/proxy \
         --http-scgi-temp-path=/var/lib/nginx/scgi \
         --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-        --with-http_ssl_module \
+        --with-http_ssl_module --add-module=./nginx-upstream-fair \
         --with-http_gzip_static_module \
         --with-http_gunzip_module \
         --with-md5=/usr/include/openssl \
